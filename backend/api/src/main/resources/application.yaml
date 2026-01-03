@@ -1,0 +1,22 @@
+spring:
+  application:
+    name: webyahime-api
+
+  # DB接続設定
+  datasource:
+    url: jdbc:postgresql://localhost:5432/webyahime
+    # ローカル環境前提の為直接記載(将来的にアップロードする場合は.envを使うこと)
+    # ※ご利用のユーザーとパスワードをご記載ください。
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+
+# 起動時ポート情報
+server:
+  port: 8080
+
+# Mybatis設定情報
+mybatis:
+  mapper-locations: classpath:/mapper/**/*.xml
+  configuration:
+    map-underscore-to-camel-case: true

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="jp.webyahime.api.mapper.StreamMapper">
+    <!-- 登録した配信情報をRETURNINGにて取得するためselectとして定義 -->
+    <select id="create" resultType="long">
+        INSERT INTO
+            t_stream (
+                title,
+                overview,
+                category_id,
+                user_id
+            )
+        VALUES
+            (#{title}, #{overview}, #{categoryId}, #{userId})
+        RETURNING stream_id
+    </select>
+
+    <select id="findByUserId" resultType="jp.webyahime.api.entity.StreamEntity">
+        SELECT *
+        FROM t_stream 
+        WHERE user_id = #{userId}
+            AND delete_flag = FALSE
+    </select>
+
+    <select id="findByStreamId" resultType="jp.webyahime.api.entity.StreamEntity">
+        SELECT *
+        FROM t_stream 
+        WHERE stream_id = #{streamId}
+            AND delete_flag = FALSE
+    </select>
+
+    <update id = "delete">
+        UPDATE t_stream
+        SET delete_flag = TRUE
+        WHERE stream_id = #{streamId}
+    </update>
+
+
+</mapper>

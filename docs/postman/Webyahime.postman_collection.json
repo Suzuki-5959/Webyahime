@@ -1,0 +1,126 @@
+{
+  "info": {
+    "_postman_id": "e9ecbc61-c402-4458-8eab-f7643927ef3e",
+    "name": "Webyahime",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "43115722"
+  },
+  "item": [
+    {
+      "name": "/streams",
+      "protocolProfileBehavior": {
+        "disabledSystemHeaders": {}
+      },
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"title\" :\"テスト配信\",\r\n    \"overview\" : \"postman使ってテストしてます～\",\r\n    \"categoryId\": 5,\r\n    \"userId\":\"305d561f-1896-4a6a-90e5-deaa2737f2b6\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/streams",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["streams"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/streams- Filtered by userId",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true,
+        "disabledSystemHeaders": {}
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/streams?userId=13bb9ce1-3353-4f90-a200-e81707a69fa6",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["streams"],
+          "query": [
+            {
+              "key": "userId",
+              "value": "13bb9ce1-3353-4f90-a200-e81707a69fa6"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/streams/{streamId}",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true,
+        "disabledSystemHeaders": {}
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/streams/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["streams", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/streams/{streamId}",
+      "protocolProfileBehavior": {
+        "disabledSystemHeaders": {}
+      },
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/streams/909",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["streams", "1"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
