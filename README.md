@@ -6,7 +6,7 @@ Web 開発百本ノック(Web アプリ開発学習用プロジェクト)
 ## 構成
 
 - backend : Spring Boot (API)
-- docs : その他ドキュメント
+- docs : DB関連(定義書、DDL、DML)、検証用postmanコレクション、その他ドキュメント
 
 ## レビューについて
 
