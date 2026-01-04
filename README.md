@@ -36,7 +36,7 @@ postgreSQL にて以下のファイルの SQL を実行(初回時のみ)
 
 powershell 上にて以下を実行(※1,2 はお使いの PosgresSQL 環境に合わせてください。)
 
-1. $env:DB_PASSWORD="DB ユーザー名"
+1. $env:DB_USER="DB ユーザー名"
 2. $env:DB_PASSWORD="DB パスワード"
 3. cd backend/api
 4. mvn clean compile
