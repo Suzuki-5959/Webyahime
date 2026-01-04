@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 
+import jp.webyahime.api.dto.StreamDetailDto;
+import jp.webyahime.api.dto.StreamListDto;
 import jp.webyahime.api.entity.StreamEntity;
 
 /**
@@ -24,17 +26,17 @@ public interface StreamMapper {
      * 指定したユーザーの配信情報リストを取得するメソッド
      * 
      * @param userId 取得対象のユーザーID
-     * @return 対象のユーザーの配信情報リスト
+     * @return 対象のユーザーの配信情報(配信ID、タイトル、カテゴリ名称、登録日時)リスト
      */
-    List<StreamEntity> findByUserId(String userId);
+    List<StreamListDto> findByUserId(String userId);
 
     /**
      * 指定した配信IDの配信情報を取得するメソッド
      * 
      * @param streamId 取得対象の配信ID
-     * @return 対象IDの配信情報
+     * @return 対象IDの配信情報(配信ID、タイトル、概要、カテゴリ名称、登録日時)
      */
-    StreamEntity findByStreamId(long streamId);
+    StreamDetailDto findByStreamId(long streamId);
 
     /**
      * 指定した配信IDの配信情報を論理削除するメソッド

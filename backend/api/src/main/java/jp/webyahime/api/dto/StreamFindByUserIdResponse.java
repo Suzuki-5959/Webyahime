@@ -17,6 +17,9 @@ public class StreamFindByUserIdResponse {
     // タイトル
     private final String title;
 
+    // カテゴリ名称
+    private final String categoryName;
+
     // 登録日時
     private final String entryDatetime;
 
@@ -33,9 +36,11 @@ public class StreamFindByUserIdResponse {
     public StreamFindByUserIdResponse(
             long streamId,
             String title,
+            String categoryName,
             LocalDateTime entryDatetime) {
         this.streamId = streamId;
         this.title = title;
+        this.categoryName = categoryName;
         this.entryDatetime = entryDatetime.toString();
     }
 }

@@ -6,8 +6,10 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import jp.webyahime.api.dto.StreamCreateRequest;
+import jp.webyahime.api.dto.StreamDetailDto;
 import jp.webyahime.api.dto.StreamFindByStreamIdResponse;
 import jp.webyahime.api.dto.StreamFindByUserIdResponse;
+import jp.webyahime.api.dto.StreamListDto;
 import jp.webyahime.api.entity.StreamEntity;
 import jp.webyahime.api.exception.ResourceNotFoundException;
 import jp.webyahime.api.mapper.StreamMapper;
@@ -37,18 +39,19 @@ public class StreamService {
 
     /**
      * 指定したユーザーの配信情報一覧を取得するメソッド
-     * Mapperから受け取った配信情報エンティティのリストをレスポンス用のリストへ変換してContllolerへ返却
+     * Mapperから受け取った配信情報のリストをレスポンス用のリストへ変換してContllolerへ返却
      * 
      * @param userId 配信情報の取得対象となるユーザーID
-     * @return 指定されたユーザーの配信情報(配信ID、タイトル、登録日時)のリスト
+     * @return 指定されたユーザーの配信情報(配信ID、タイトル、カテゴリ名称、登録日時)のリスト
      */
     public List<StreamFindByUserIdResponse> findByUserId(String userId) {
         List<StreamFindByUserIdResponse> responseList = new ArrayList<>();
-        for (StreamEntity streamEntity : streamMapper.findByUserId(userId)) {
+        for (StreamListDto streamListDto : streamMapper.findByUserId(userId)) {
             responseList.add(new StreamFindByUserIdResponse(
-                    streamEntity.getStreamId(),
-                    streamEntity.getTitle(),
-                    streamEntity.getEntryDatetime()));
+                    streamListDto.streamId(),
+                    streamListDto.title(),
+                    streamListDto.categoryName(),
+                    streamListDto.entryDatetime()));
         }
         return responseList;
     }
@@ -58,15 +61,17 @@ public class StreamService {
      * Mapperから受け取った配信情報エンティティのリストをレスポンス用のリストへ変換してContllolerへ返却
      * 
      * @param streamId 取得対象となる配信情報のID
-     * @return 指定されたIDの配信情報(配信ID、タイトル、概要、登録日時)一件
+     * @return 指定されたIDの配信情報(配信ID、タイトル、概要、カテゴリID、カテゴリ名称、登録日時)一件
      */
     public StreamFindByStreamIdResponse findByStreamId(String streamId) {
-        StreamEntity entity = streamMapper.findByStreamId(Long.parseLong(streamId));
+        StreamDetailDto detailDto = streamMapper.findByStreamId(Long.parseLong(streamId));
         StreamFindByStreamIdResponse response = new StreamFindByStreamIdResponse(
-                entity.getStreamId(),
-                entity.getTitle(),
-                entity.getOverview(),
-                entity.getEntryDatetime());
+                detailDto.streamId(),
+                detailDto.title(),
+                detailDto.overview(),
+                detailDto.categoryId(),
+                detailDto.categoryName(),
+                detailDto.entryDatetime());
         return response;
     }
 

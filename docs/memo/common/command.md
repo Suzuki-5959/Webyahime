@@ -18,6 +18,9 @@
 - backend
   - backend へ移動<br>
     cd backend/api
+  - DB ユーザー名、パスワードの環境変数設定
+    $env:DB_PASSWORD="DB ユーザー名"
+    $env:DB_PASSWORD="DB パスワード"
   - maven コンパイル
     mvn clean compile
   - Spring 起動<br>
