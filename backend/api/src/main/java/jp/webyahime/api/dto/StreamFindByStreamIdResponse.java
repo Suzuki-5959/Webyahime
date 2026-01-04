@@ -20,6 +20,12 @@ public class StreamFindByStreamIdResponse {
     // 概要
     private final String overview;
 
+    // カテゴリID
+    long categoryId;
+
+    // カテゴリ名称
+    String categoryName;
+
     // 登録日時
     private final String entryDatetime;
 
@@ -35,10 +41,14 @@ public class StreamFindByStreamIdResponse {
             long streamId,
             String title,
             String overview,
+            long categoryId,
+            String categoryName,
             LocalDateTime entryDatetime) {
         this.streamId = streamId;
         this.title = title;
         this.overview = overview;
+        this.categoryId = categoryId;
+        this.categoryName = categoryName;
         this.entryDatetime = entryDatetime.toString();
     }
 }

@@ -6,7 +6,7 @@ Web 開発百本ノック(Web アプリ開発学習用プロジェクト)
 ## 構成
 
 - backend : Spring Boot (API)
-- docs : DB関連(定義書、DDL、DML)、検証用postmanコレクション、その他ドキュメント
+- docs : DB 関連(定義書、DDL、DML)、検証用 postman コレクション、その他ドキュメント
 
 ## レビューについて
 
@@ -15,7 +15,7 @@ Web 開発百本ノック(Web アプリ開発学習用プロジェクト)
 - Tag：lesson-X
 - 手順
 
-1. Codeタブ内ブランチ指定欄を開く 
+1. Code タブ内ブランチ指定欄を開く
 2. Tags を選択
 3. lesson-X を選択
 
@@ -29,9 +29,11 @@ Web 開発百本ノック(Web アプリ開発学習用プロジェクト)
 - IDE: VSCode
 
 ## 起動手順
+
 アプリを起動なさる場合は以下手順での起動をお願いします。
 
 postgreSQL にて以下のファイルの SQL を実行(初回時のみ)
+
 - docs>DDL、DML
 
 powershell 上にて以下を実行(※1,2 はお使いの PosgresSQL 環境に合わせてください。)

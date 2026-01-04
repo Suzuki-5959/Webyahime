@@ -18,24 +18,45 @@
         RETURNING stream_id
     </select>
 
-    <select id="findByUserId" resultType="jp.webyahime.api.entity.StreamEntity">
-        SELECT *
-        FROM t_stream 
-        WHERE user_id = #{userId}
-            AND delete_flag = FALSE
+    <select id="findByUserId" resultType="jp.webyahime.api.dto.StreamListDto">
+        SELECT
+            ts.stream_id,
+            ts.title,
+            mc.category_name,
+            ts.entry_datetime
+        FROM
+            t_stream ts
+            JOIN m_category mc 
+                ON ts.category_id = mc.category_id
+        WHERE
+            ts.user_id = #{userId}
+            AND ts.delete_flag = FALSE
+            AND mc.delete_flag = FALSE;
     </select>
 
-    <select id="findByStreamId" resultType="jp.webyahime.api.entity.StreamEntity">
-        SELECT *
-        FROM t_stream 
-        WHERE stream_id = #{streamId}
-            AND delete_flag = FALSE
+    <select id="findByStreamId" resultType="jp.webyahime.api.dto.StreamDetailDto">
+        SELECT
+            ts.stream_id,
+            ts.title,
+            ts.overview,
+            ts.category_id,
+            mc.category_name,
+            ts.entry_datetime
+        FROM
+            t_stream ts
+            JOIN m_category mc 
+                ON ts.category_id = mc.category_id
+        WHERE
+            ts.stream_id = #{streamId}
+            AND ts.delete_flag = FALSE
+            AND mc.delete_flag = FALSE;
     </select>
 
     <update id = "delete">
         UPDATE t_stream
         SET delete_flag = TRUE
         WHERE stream_id = #{streamId}
+            AND delete_flag = FALSE
     </update>
 
 
